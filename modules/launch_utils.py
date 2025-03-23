@@ -607,8 +607,7 @@ def prepare_environment():
             rocm.load_hsa_runtime()
 
     if args.reinstall_torch or not is_installed("torch") or not is_installed("torchvision"):
-        run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
-        startup_timer.record("install torch")
+        print("WARNING: you should not skip torch test unless you want CPU to work.")
 
     if args.skip_torch_cuda_test:
         print("WARNING: you should not skip torch test unless you want CPU to work.")
